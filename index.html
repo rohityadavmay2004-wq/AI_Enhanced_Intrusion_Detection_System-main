@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Enhanced Intrusion Detection System</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>" />
+    <link href="/static/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div class="page-wrapper">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="header-badge">
+          <span class="dot"></span>
+          System Active
+        </div>
+        <h1>AI-Enhanced <span>Intrusion Detection</span></h1>
+        <p>Random Forest Classifier &nbsp;·&nbsp; 4-Feature Network Analysis</p>
+      </header>
+
+      <!-- Side-by-side cards -->
+      <div class="main-layout">
+
+        <!-- LEFT — Input Card -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">📡</div>
+            <span class="card-title">Network Traffic Parameters</span>
+          </div>
+
+          <form id="predict-form" method="POST" action="/predict">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="flow_duration">⏱ Flow Duration</label>
+                <input
+                  type="number" id="flow_duration" name="flow_duration"
+                  step="any" placeholder="e.g. 3500000"
+                  value="{{ request.form.get('flow_duration', '') }}"
+                  required />
+              </div>
+
+              <div class="form-group">
+                <label for="total_fwd_packets">📤 Fwd Packets</label>
+                <input
+                  type="number" id="total_fwd_packets" name="total_fwd_packets"
+                  step="any" placeholder="e.g. 12"
+                  value="{{ request.form.get('total_fwd_packets', '') }}"
+                  required />
+              </div>
+
+              <div class="form-group">
+                <label for="total_backward_packets">📥 Bwd Packets</label>
+                <input
+                  type="number" id="total_backward_packets" name="total_backward_packets"
+                  step="any" placeholder="e.g. 8"
+                  value="{{ request.form.get('total_backward_packets', '') }}"
+                  required />
+              </div>
+
+              <div class="form-group">
+                <label for="total_length_fwd_packets">📦 Fwd Payload (B)</label>
+                <input
+                  type="number" id="total_length_fwd_packets" name="total_length_fwd_packets"
+                  step="any" placeholder="e.g. 1024"
+                  value="{{ request.form.get('total_length_fwd_packets', '') }}"
+                  required />
+              </div>
+            </div>
+
+            <button type="submit" id="predict-btn" class="btn-predict">
+              <span class="btn-text">⚡ &nbsp;Analyze Traffic</span>
+              <span class="btn-spinner"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- RIGHT — Result Card -->
+        <div class="card result-panel" id="result-panel"
+             data-has-result="{{ 'true' if prediction else 'false' }}">
+
+          <div class="card-header">
+            <div class="card-icon">🔍</div>
+            <span class="card-title">Detection Result</span>
+          </div>
+
+          <!-- Empty state (shown before any prediction) -->
+          {% if not prediction %}
+          <div class="result-empty">
+            <div class="empty-icon">🛡️</div>
+            <p>Enter network parameters and run analysis to see classification result.</p>
+          </div>
+          {% endif %}
+
+          <!-- Result content (shown after prediction) -->
+          {% if prediction %}
+          {% set is_threat = prediction|lower not in ['benign', 'normal', 'safe'] %}
+          <div class="result-content">
+            <div class="result-verdict {{ 'threat' if is_threat else 'safe' }}">
+              <div class="verdict-icon">{{ '🚨' if is_threat else '✅' }}</div>
+              <div>
+                <div class="verdict-label">Classification</div>
+                <div class="verdict-value">{{ prediction }}</div>
+              </div>
+            </div>
+
+            <div class="features-grid">
+              <div class="feature-chip">
+                <div class="chip-label">⏱ Flow Duration</div>
+                <div class="chip-value" data-raw="{{ request.form.get('flow_duration') }}">{{ request.form.get('flow_duration') }}</div>
+              </div>
+              <div class="feature-chip">
+                <div class="chip-label">📤 Fwd Packets</div>
+                <div class="chip-value" data-raw="{{ request.form.get('total_fwd_packets') }}">{{ request.form.get('total_fwd_packets') }}</div>
+              </div>
+              <div class="feature-chip">
+                <div class="chip-label">📥 Bwd Packets</div>
+                <div class="chip-value" data-raw="{{ request.form.get('total_backward_packets') }}">{{ request.form.get('total_backward_packets') }}</div>
+              </div>
+              <div class="feature-chip">
+                <div class="chip-label">📦 Fwd Payload (B)</div>
+                <div class="chip-value" data-raw="{{ request.form.get('total_length_fwd_packets') }}">{{ request.form.get('total_length_fwd_packets') }}</div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        🛡️ &nbsp;AI-Enhanced IDS &nbsp;·&nbsp; Random Forest Model &nbsp;·&nbsp; Cybersecurity Threat Detection
+      </footer>
+
+    </div>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>
