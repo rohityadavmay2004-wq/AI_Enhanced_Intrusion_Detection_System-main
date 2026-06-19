@@ -1,0 +1,11 @@
+0000000000000000000000000000000000000000 0019c9ac1e1d7a2217d2f3002fe6693be5cdc824 Amruta-K15 <khadeamruta65@gmail.com> 1781858086 +0530	commit (initial): Initial commit
+0019c9ac1e1d7a2217d2f3002fe6693be5cdc824 0000000000000000000000000000000000000000 Amruta-K15 <khadeamruta65@gmail.com> 1781858086 +0530	Branch: renamed refs/heads/master to refs/heads/main
+0000000000000000000000000000000000000000 0019c9ac1e1d7a2217d2f3002fe6693be5cdc824 Amruta-K15 <khadeamruta65@gmail.com> 1781858086 +0530	Branch: renamed refs/heads/master to refs/heads/main
+0019c9ac1e1d7a2217d2f3002fe6693be5cdc824 9c575c9fb969902507df440b846ee418720908bf Amruta-K15 <khadeamruta65@gmail.com> 1781858749 +0530	commit: Remove demo video
+9c575c9fb969902507df440b846ee418720908bf 9504d3fc125606acbb740ce60b77238158ba4bb0 Amruta-K15 <khadeamruta65@gmail.com> 1781858915 +0530	pull origin main --rebase (start): checkout 9504d3fc125606acbb740ce60b77238158ba4bb0
+9504d3fc125606acbb740ce60b77238158ba4bb0 33df9a0656a57be37a08d205c2fdb34986a06dbe Amruta-K15 <khadeamruta65@gmail.com> 1781858916 +0530	pull origin main --rebase (pick): Remove demo video
+33df9a0656a57be37a08d205c2fdb34986a06dbe 33df9a0656a57be37a08d205c2fdb34986a06dbe Amruta-K15 <khadeamruta65@gmail.com> 1781858916 +0530	pull origin main --rebase (finish): returning to refs/heads/main
+33df9a0656a57be37a08d205c2fdb34986a06dbe 365392fd5e90431a03ef5f78b9839f383ed338cb Amruta-K15 <khadeamruta65@gmail.com> 1781859211 +0530	commit: Remove project document
+365392fd5e90431a03ef5f78b9839f383ed338cb f9f9ad2c9f895c417edadad08c94c1a346fbedb8 RohitCYadav <rohitcyadav29@gmail.com> 1781872074 +0530	commit: Initial commit
+f9f9ad2c9f895c417edadad08c94c1a346fbedb8 0000000000000000000000000000000000000000 RohitCYadav <rohitcyadav29@gmail.com> 1781872076 +0530	Branch: renamed refs/heads/main to refs/heads/main
+f9f9ad2c9f895c417edadad08c94c1a346fbedb8 f9f9ad2c9f895c417edadad08c94c1a346fbedb8 RohitCYadav <rohitcyadav29@gmail.com> 1781872076 +0530	Branch: renamed refs/heads/main to refs/heads/main
